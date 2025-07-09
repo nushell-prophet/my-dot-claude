@@ -1,5 +1,29 @@
 # Jujutsu (jj) Guide for AI Agents
 
+> **⚠️ CRITICAL WARNING ABOUT FILE UNTRACKING:**
+> 
+> **DO NOT USE `jj abandon` TO REMOVE FILES FROM VERSION CONTROL!**
+> - `jj abandon` DELETES THE ENTIRE COMMIT and all its changes
+> - To remove files from version control WITHOUT deleting them: USE `jj file untrack <file>`
+> - `jj file untrack` removes files from tracking but KEEPS them on disk
+> - This is equivalent to `git rm --cached` in Git
+> 
+> **CORRECT WORKFLOW TO UNTRACK FILES:**
+> 1. **FIRST** - Add the file/pattern to `.gitignore` to prevent re-tracking
+> 2. **THEN** - Use `jj file untrack <file>` to remove from version control
+> 3. **FINALLY** - Commit both the .gitignore change and the untracking
+> 
+> **EXAMPLE:**
+> ```bash
+> # Wrong way (file will be tracked again on next operation):
+> jj file untrack secrets.env
+> 
+> # Correct way:
+> echo "secrets.env" >> .gitignore
+> jj file untrack secrets.env
+> jj commit -m "Remove secrets.env from tracking"
+> ```
+
 > **📋 IMMEDIATE ACTION REQUIRED:**
 > 
 > **Review your recent jj commands against this guide.** If you used any of the following interactive commands, they will fail in automated environments:

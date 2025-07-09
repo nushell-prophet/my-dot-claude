@@ -1,5 +1,5 @@
 ---
-allowed-tools: Bash(jj st:*), Bash(jj commit:*), Bash(jj diff:*), Bash(jj describe:*), Bash(jj squash:*), Bash(jj new:*)
+allowed-tools: Bash(jj st:*), Bash(jj commit:*), Bash(jj diff:*), Bash(jj describe:*), Bash(jj squash:*), Bash(jj new:*), Bash(jj file list:*), Bash(jj file track:*), Bash(jj file untrack:*)
 description: Create a jj commit
 ---
 
@@ -21,6 +21,7 @@ Based on the above changes:
 
 - Review the context and understand what changes are present
 - If necessary, understand what should be added to .gitignore
+- **To untrack files**: First add to .gitignore, then use `jj file untrack <file>` (NOT `jj abandon`)
 - Create commits by grouping relevant changes using these AI-safe commands:
   - `jj commit -m 'description'` (commits all current changes)
   - `jj squash <filepaths> -m 'description'` (move specific files to parent)
